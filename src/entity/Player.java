@@ -80,7 +80,7 @@ public class Player extends Entity {
 
             // CHECK TILE COLLISION
             collisionOn = false;
-            gamePanel.colissionChecker.checkTile(this);
+            gamePanel.collisionChecker.checkTile(this);
 
             // IF COLLISION IS FALSE, PLAYER CAN MOVE
             if(!collisionOn) {
