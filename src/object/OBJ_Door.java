@@ -16,5 +16,7 @@ public class OBJ_Door extends SuperObject {
         } catch (IOException e) {
             LOGGER.severe("Failed to load image for OBJ_Door: " + e.getMessage());
         }
+
+        collision = true;
     }
 }
