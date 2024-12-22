@@ -15,8 +15,8 @@ import java.util.logging.Logger;
 public class TileManager {
 
     GamePanel gamePanel;
-    Tile[] tiles;
-    int[][] mapTileNum;
+    public Tile[] tiles;
+    public int[][] mapTileNum;
     private static final Logger LOGGER = Logger.getLogger(TileManager.class.getName());
 
     public TileManager(GamePanel gamePanel) {
@@ -41,10 +41,12 @@ public class TileManager {
             tiles[1] = new Tile();
             tiles[1].tileImage = ImageIO.read(Objects.requireNonNull(getClass().
                     getResourceAsStream("/tiles/wall.png")));
+            tiles[1].collision = true;
 
             tiles[2] = new Tile();
             tiles[2].tileImage = ImageIO.read(Objects.requireNonNull(getClass().
                     getResourceAsStream("/tiles/water.png")));
+            tiles[2].collision = true;
 
             tiles[3] = new Tile();
             tiles[3].tileImage = ImageIO.read(Objects.requireNonNull(getClass().
@@ -53,6 +55,7 @@ public class TileManager {
             tiles[4] = new Tile();
             tiles[4].tileImage = ImageIO.read(Objects.requireNonNull(getClass().
                     getResourceAsStream("/tiles/tree.png")));
+            tiles[4].collision = true;
 
             tiles[5] = new Tile();
             tiles[5].tileImage = ImageIO.read(Objects.requireNonNull(getClass().
