@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 
 public class OBJ_Boots extends SuperObject {
 
-    private static final Logger LOGGER = Logger.getLogger(OBJ_Key.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(OBJ_Boots.class.getName());
 
     public OBJ_Boots() {
 
