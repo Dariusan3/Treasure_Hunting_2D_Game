@@ -1,5 +1,7 @@
 package main;
 
+import entity.Player;
+
 import javax.swing.JPanel;
 import java.awt.*;
 
@@ -9,7 +11,7 @@ public class GamePanel extends JPanel implements Runnable{
     final int originalTileSize = 16; //16 x 16 tile
     final int scale = 3;
 
-    final int tileSize = originalTileSize * scale; // 48 x 48 tile
+    public final int tileSize = originalTileSize * scale; // 48 x 48 tile
     final int maxScreenCol = 16;
     final int maxScreenRow = 12;
     final int screenWidth = maxScreenCol * tileSize; // 768 pixels
@@ -18,13 +20,10 @@ public class GamePanel extends JPanel implements Runnable{
     //FPS
     int FPS = 60;
 
-    // Set player's default position
-    int player_X = 100;
-    int player_Y = 100;
-    int playerSpeed  = 4;
 
     KeyHandler keyHandler = new KeyHandler();
     Thread gameThread;
+    Player player = new Player(this, keyHandler);
 
     public GamePanel() {
 
@@ -67,7 +66,7 @@ public class GamePanel extends JPanel implements Runnable{
             }
 
             if(timer >= 1000000000) {
-               System.out.println("FPS: " + drawCount);
+                System.out.println("FPS: " + drawCount);
                 drawCount = 0;
                 timer = 0;
             }
@@ -76,18 +75,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update() {
 
-        if(keyHandler.upPressed) {
-            player_Y -= playerSpeed;
-        }
-        if(keyHandler.downPressed) {
-            player_Y += playerSpeed;
-        }
-        if(keyHandler.leftPressed) {
-            player_X -= playerSpeed;
-        }
-        if(keyHandler.rightPressed) {
-            player_X += playerSpeed;
-        }
+        player.update();
     }
 
     public void paintComponent(Graphics g) {
@@ -96,9 +84,7 @@ public class GamePanel extends JPanel implements Runnable{
 
         Graphics2D g2 = (Graphics2D) g;
 
-        g2.setColor(Color.WHITE);
-
-        g2.fillRect(player_X, player_Y, tileSize, tileSize);
+        player.draw(g2);
 
         g2.dispose();
     }
